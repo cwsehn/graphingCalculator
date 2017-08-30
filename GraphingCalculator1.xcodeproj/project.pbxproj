@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		138F90EE1F57520A00AB9B3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 138F90EC1F57520A00AB9B3D /* Main.storyboard */; };
 		13CA627A1F573C98004CA214 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA62791F573C98004CA214 /* AppDelegate.swift */; };
 		13CA62811F573C98004CA214 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13CA62801F573C98004CA214 /* Assets.xcassets */; };
 		13CA62841F573C98004CA214 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CA62821F573C98004CA214 /* LaunchScreen.storyboard */; };
 		13CA628D1F573DFD004CA214 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA628C1F573DFD004CA214 /* CalculatorViewController.swift */; };
 		13CA628F1F573E61004CA214 /* Calc2Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA628E1F573E61004CA214 /* Calc2Brain.swift */; };
-		13CA62911F57406F004CA214 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CA62901F57406F004CA214 /* Main.storyboard */; };
+		13CA62971F574C4D004CA214 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA62961F574C4D004CA214 /* GraphViewController.swift */; };
+		13CA62991F574C86004CA214 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA62981F574C86004CA214 /* GraphView.swift */; };
+		13CA629B1F574C99004CA214 /* AxesDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA629A1F574C99004CA214 /* AxesDrawer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		138F90ED1F57520A00AB9B3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		13CA62761F573C98004CA214 /* GraphingCalculator1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphingCalculator1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13CA62791F573C98004CA214 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13CA62801F573C98004CA214 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -23,7 +27,9 @@
 		13CA62851F573C98004CA214 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13CA628C1F573DFD004CA214 /* CalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		13CA628E1F573E61004CA214 /* Calc2Brain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calc2Brain.swift; sourceTree = "<group>"; };
-		13CA62901F57406F004CA214 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		13CA62961F574C4D004CA214 /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
+		13CA62981F574C86004CA214 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		13CA629A1F574C99004CA214 /* AxesDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxesDrawer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +62,11 @@
 		13CA62781F573C98004CA214 /* GraphingCalculator1 */ = {
 			isa = PBXGroup;
 			children = (
-				13CA62901F57406F004CA214 /* Main.storyboard */,
+				138F90EC1F57520A00AB9B3D /* Main.storyboard */,
 				13CA628C1F573DFD004CA214 /* CalculatorViewController.swift */,
+				13CA62961F574C4D004CA214 /* GraphViewController.swift */,
+				13CA629A1F574C99004CA214 /* AxesDrawer.swift */,
+				13CA62981F574C86004CA214 /* GraphView.swift */,
 				13CA628E1F573E61004CA214 /* Calc2Brain.swift */,
 				13CA628B1F573D69004CA214 /* OriginalParts */,
 			);
@@ -135,9 +144,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13CA62911F57406F004CA214 /* Main.storyboard in Resources */,
 				13CA62841F573C98004CA214 /* LaunchScreen.storyboard in Resources */,
 				13CA62811F573C98004CA214 /* Assets.xcassets in Resources */,
+				138F90EE1F57520A00AB9B3D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,15 +157,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13CA62991F574C86004CA214 /* GraphView.swift in Sources */,
 				13CA628F1F573E61004CA214 /* Calc2Brain.swift in Sources */,
+				13CA62971F574C4D004CA214 /* GraphViewController.swift in Sources */,
 				13CA628D1F573DFD004CA214 /* CalculatorViewController.swift in Sources */,
 				13CA627A1F573C98004CA214 /* AppDelegate.swift in Sources */,
+				13CA629B1F574C99004CA214 /* AxesDrawer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		138F90EC1F57520A00AB9B3D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				138F90ED1F57520A00AB9B3D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		13CA62821F573C98004CA214 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -271,6 +291,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Sehns.GraphingCalculator1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -284,6 +305,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Sehns.GraphingCalculator1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -306,6 +328,7 @@
 				13CA628A1F573C98004CA214 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
