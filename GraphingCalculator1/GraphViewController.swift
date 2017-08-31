@@ -9,10 +9,14 @@
 import UIKit
 
 class GraphViewController: UIViewController {
+    
+    var graphBrain = Calc2Brain()
+    private var evaluation: (result: Double?, isPending: Bool, description: String) = (nil, false, "")
 
     
 
     @IBOutlet weak var graphView: GraphView! {
+   
         didSet {
             let tapHandler = #selector(moveOrigin(byReactingTo:))
             let tapRecognizer = UITapGestureRecognizer(target: self, action: tapHandler)
@@ -32,16 +36,24 @@ class GraphViewController: UIViewController {
         }
     }
     
+    
+    
     var path = UIBezierPath()
     
     
     var modelCalculatedYValue: CGFloat? {
         if graphView.xCoordinate != nil {
             graphView.calculateYValueRange()
-           // let tempY: CGFloat = (graphView.xCoordinate!) * (graphView.xCoordinate!)
-            let tempY: CGFloat = 10 * sin(graphView.xCoordinate!)
-            if tempY > graphView.minYValue! && tempY < graphView.maxYValue! {
-                return tempY
+            let xInput = ["M" : Double(graphView.xCoordinate!)]
+            var tempY: CGFloat?
+            evaluation = graphBrain.evaluate(using: xInput)
+            if evaluation.result != nil {
+                tempY = CGFloat(evaluation.result!)
+            }
+            if tempY != nil {
+                if tempY! > graphView.minYValue! && tempY! < graphView.maxYValue! {
+                    return tempY
+                }
             }
         }
         return nil

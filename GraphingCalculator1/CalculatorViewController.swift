@@ -17,8 +17,16 @@ class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var memoryValueDisplay: UILabel!
     
-    
-    
+ 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationViewController = segue.destination
+        if let graphViewController = destinationViewController as? GraphViewController
+        {
+            graphViewController.graphBrain.opList = brain.opList
+            graphViewController.plotGraph()
+        }
+    }
+ 
     private var brain = Calc2Brain()
     private var memoryStore = Memory()
     

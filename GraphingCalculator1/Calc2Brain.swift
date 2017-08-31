@@ -207,7 +207,7 @@ struct Calc2Brain {
      -----------------------------------------*/
     
     
-    private var opList: Array<String> = []
+    var opList: Array<String> = []
     
     mutating func undo () {        
         if !opList.isEmpty {
