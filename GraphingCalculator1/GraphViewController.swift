@@ -12,7 +12,7 @@ class GraphViewController: UIViewController {
     
     var graphBrain = Calc2Brain()
     private var evaluation: (result: Double?, isPending: Bool, description: String) = (nil, false, "")
-
+    private var path = UIBezierPath()
     
 
     @IBOutlet weak var graphView: GraphView! {
@@ -30,15 +30,14 @@ class GraphViewController: UIViewController {
             let pinchHandler = #selector(changeScale(byReactingTo:))
             let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: pinchHandler)
             graphView.addGestureRecognizer(pinchRecognizer)
-            
-            updateUI()
-            
         }
     }
     
-    
-    
-    var path = UIBezierPath()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        graphView.numberOfGraphPoints()
+        updateUI()
+    }
     
     
     var modelCalculatedYValue: CGFloat? {
@@ -65,6 +64,7 @@ class GraphViewController: UIViewController {
             graphView.equationPath?.removeAllPoints()
             graphView.numberOfGraphPoints()
             
+            
             for x in 0...graphView.maxPoints! {
                 
                 graphView.convertGraphPointsToXCoordinate(graphPoint: x)
@@ -87,6 +87,7 @@ class GraphViewController: UIViewController {
             
             path.lineWidth = graphView.pathWidth
             graphView.equationPath = path
+            
         }
     }
     
@@ -123,7 +124,7 @@ class GraphViewController: UIViewController {
         
     
     func updateUI () {
-        graphView.colorizeAxes()
+        
         plotGraph()
     }
  

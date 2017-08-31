@@ -14,7 +14,7 @@ class GraphView: UIView {
     // public API
     
     // scale is at times a denominator and therefore should never be allowed to be zero....
-    var scale: CGFloat = 1.0 { didSet { setNeedsDisplay() } }
+    var scale: CGFloat = 10.0 { didSet { setNeedsDisplay() } }
     
     @IBInspectable
     var axesColor: UIColor = UIColor.brown { didSet { setNeedsDisplay() } }
@@ -34,7 +34,10 @@ class GraphView: UIView {
     
     // graphSizeX and graphSizeY assume superview is ViewController.view
     var graphSizeX: CGFloat? {
-        return self.superview?.bounds.maxX
+        get {
+            return self.superview?.bounds.maxX
+        }
+        set {}
     }
     var graphSizeY: CGFloat? {
         return self.superview?.bounds.maxY
@@ -58,7 +61,6 @@ class GraphView: UIView {
     func numberOfGraphPoints() {
         if graphSizeX != nil {
             maxPoints = Int(graphSizeX!)
-            // print("\(maxPoints!) \n")
         }
     }
     
@@ -70,7 +72,6 @@ class GraphView: UIView {
         if graphSizeY != nil {
             maxYValue = axesOrigin.y / scaleTranslation
             minYValue = maxYValue! - (graphSizeY! / scaleTranslation)
-            // print("maxY value is \(maxYValue!)\nminY value is \(minYValue!)")
         }
     }
     
@@ -81,7 +82,6 @@ class GraphView: UIView {
         }
         
         xCoordinate = (CGFloat(graphPoint) - axesOrigin.x) / scaleTranslation
-        // print("first x-value is \(xCoordinate!)\n")
     }
     
     func convertYCoordinateToGraphPoint (yCoordinate: CGFloat) {
@@ -91,7 +91,6 @@ class GraphView: UIView {
         }
         
         yPoint = (axesOrigin.y - (yCoordinate * scaleTranslation))
-        // print("PointY is currently \(yPoint!)")
     }
     
     func createPointFromCoordinate (graphPointX: Int, yValue: CGFloat) {
@@ -140,6 +139,7 @@ class GraphView: UIView {
     override func draw(_ rect: CGRect) {
         
         axesColor.set()
+        colorizeAxes()
         pathColor.set()
         axes.drawAxes(in: bounds, origin: axesOrigin, pointsPerUnit: contentScaleFactor * scale)
         equationPath?.stroke()
