@@ -163,6 +163,7 @@ struct Calc2Brain {
         case constant(Double)
         case unaryOperation((Double) -> Double)
         case binaryOperation((Double,Double) -> Double)
+        case powersOperation((Double) -> Double)
         case random
         case equals
         case clear
@@ -181,6 +182,8 @@ struct Calc2Brain {
         "-": .binaryOperation { $0 - $1 },
         "×": .binaryOperation { $0 * $1 },
         "÷": .binaryOperation { $0 / $1 },
+        "^2": .powersOperation { $0 * $0 },
+        "^3": .powersOperation { $0 * $0 * $0 },
         "?#": .random,
         "=": .equals
     ]
@@ -234,15 +237,17 @@ struct Calc2Brain {
         -> (result: Double?, isPending: Bool, description: String) {
             
         
-            // these variables are ultimately returned by the evaluate (result:isPending:description:) tuple....
+            // these variables are ultimately returned by the evaluate(result:isPending:description:) tuple....
             var output: Double?
             var isPending: Bool = false
             var descriptor = " "
             
+            
+            
             // the following variables are mutated within the scope of the func evaluate(using:)
          
             var workingOps = [String]()
-            var equalsIsSet: Bool = false
+            var pendingOperation: Operation?
             var currentOperation: Operation?
             var operand1: Double?
             var operand2: Double?
@@ -250,13 +255,13 @@ struct Calc2Brain {
             var workingOp: String?
             var currentOp: String?
             var variableOperand: String?
-            var pendingOperation: Operation?
             var binarys = ["+", "-", "÷", "×"]
             var constantsOrRandom = ["π", "e", "?#"]
             var isConstantOrRandom = false
             var isBinary = false
             var opSetOnValue = false
             var isVariable = false
+            var equalsIsSet = false
 
             
             /*___________________________________________________________________________________
@@ -346,6 +351,30 @@ struct Calc2Brain {
                         return function(op1!, op2!)
                         
                     }
+                case .powersOperation(let function):
+                    equalsIsSet = false
+                    if op2 != nil {
+                        if isVariable {
+                            descriptor = descriptor + " (\(variableOperand!)\(workingOp!))"
+                            isVariable = false
+                        } else {
+                            descriptor = descriptor + " (\(op2!)\(workingOp!))"
+                        }
+                        opSetOnValue = true
+                        equalsIsSet = true
+                        return function(op2!)
+                    }
+                    if op1 != nil {
+                        descriptor = "(\(descriptor))\(workingOp!))"
+                        opSetOnValue = true
+                        equalsIsSet = true
+                        return function(op1!)
+                    } else {
+                        descriptor = "(0\(workingOp!))"
+                        equalsIsSet = true
+                        return function(0)
+                    }
+                    
                 case .equals:
                     
                     if isPending {
@@ -525,6 +554,8 @@ struct Calc2Brain {
              this simple conditional statement accesses opList array of input from user...
              and calls the nested func evaluation(ops:)
              -------------------------------------------------*/
+            
+            
             if opList.isEmpty {
                 output = nil
                 isPending = false
@@ -535,6 +566,8 @@ struct Calc2Brain {
             
             
             return (output, isPending, descriptor)
+ 
+ 
     }
     
     

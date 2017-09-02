@@ -84,10 +84,8 @@ class GraphViewController: UIViewController {
                     path.addLine(to: graphView.pathPoint!)
                 }
             }
-            
             path.lineWidth = graphView.pathWidth
             graphView.equationPath = path
-            
         }
     }
     
@@ -155,6 +153,8 @@ class GraphViewController: UIViewController {
     }
 }
 */
+
+
 
 
 

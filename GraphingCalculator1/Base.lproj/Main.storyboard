@@ -190,7 +190,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="65.5" height="84.5"/>
                                                                                 <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                                <state key="normal" title="?#">
+                                                                                <state key="normal" title="^2">
                                                                                     <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 </state>
                                                                                 <connections>
@@ -250,7 +250,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="65.5" height="84"/>
                                                                                 <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                                <state key="normal" title="e">
+                                                                                <state key="normal" title="^3">
                                                                                     <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 </state>
                                                                                 <connections>
